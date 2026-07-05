@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module for computing input/output statistics from stdin."""
 
+# Script entrypoint for processing stdin log statistics.
 import sys
 
 
