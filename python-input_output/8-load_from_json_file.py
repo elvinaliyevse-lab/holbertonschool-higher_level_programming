@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module for loading Python objects from JSON files."""
+
 from json import loads
 
 

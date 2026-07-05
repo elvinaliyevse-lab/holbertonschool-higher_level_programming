@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module for saving Python objects to JSON files."""
+
 from json import dumps
 
 

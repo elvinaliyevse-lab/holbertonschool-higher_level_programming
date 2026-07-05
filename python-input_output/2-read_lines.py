@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module for reading and printing lines from a text file."""
+
 def read_lines(filename="", nb_lines=0):
     with open(filename, encoding='utf-8') as f:
         text = f.readlines()

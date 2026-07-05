@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module for converting Python objects to JSON strings."""
+
 from json import dumps
 
 
