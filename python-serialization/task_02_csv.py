@@ -1,32 +1,35 @@
 #!/usr/bin/python3
-"""Convert CSV data to JSON output."""
-
+"""
+    Module containing functions that takes CSV and converts to JSON
+"""
 import csv
 import json
 
 
 def convert_csv_to_json(filename):
-    """Convert a CSV file into a JSON file named data.json."""
+    """Function to convert CSV to JSON"""
+
     try:
-        with open(filename, 'r', encoding='utf-8') as file:
+        # Reading the csv file
+        with open(filename, 'r') as file:
             reader = csv.DictReader(file)
+
+            # Changing content to list
             data = list(reader)
 
-        with open('data.json', 'w', encoding='utf-8') as file:
+        # Writing content as JSON to the file
+        json_filename = 'data.json'
+        with open(json_filename, 'w') as file:
             json.dump(data, file, indent=4)
             return True
-    except Exception as exc:
-        print("An error occurred:", exc)
+
+    # Exception handling
+    except Exception as e:
+        print("An error occurred:", e)
         return False
 
 
-def main():
-    """Run the CSV-to-JSON conversion with the default input file."""
-    csv_file = "data.csv"
-    convert_csv_to_json(csv_file)
-    print(f"Data from {csv_file} has been converted to data.json")
-
-
-if __name__ == "__main__":
-    main()
+csv_file = "data.csv"
+convert_csv_to_json(csv_file)
+print(f"Data from {csv_file} has been converted to data.json")
 
