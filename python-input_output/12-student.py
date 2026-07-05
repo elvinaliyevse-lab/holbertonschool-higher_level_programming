@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module defining the Student class with JSON serialization."""
+"""Module defining the Student class with reload support."""
 
 class Student:
     def __init__(self, first_name, last_name, age):
@@ -22,3 +22,8 @@ class Student:
             return sel_d
 
         return class_d
+
+    def reload_from_json(self, json):
+        for i in json:
+            if i in self.__dict__.keys():
+                self.__dict__[i] = json[i]
