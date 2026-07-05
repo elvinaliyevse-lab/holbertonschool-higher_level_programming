@@ -2,6 +2,7 @@
 """Module for generating Pascal's triangle."""
 
 def pascal_triangle(n):
+    """Return a Pascal's triangle up to n rows."""
     if n <= 0:
         return []
 
