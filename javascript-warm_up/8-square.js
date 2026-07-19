@@ -1,11 +1,13 @@
 #!/usr/bin/node
-const size = Math.floor(Number(process.argv[2]));
-if (isNaN(size)) {
+
+// prints a square
+
+const count = process.argv[2];
+const character = 'X';
+if (isNaN(count)) {
   console.log('Missing size');
 } else {
-  for (let r = 0; r < size; r++) {
-    let row = '';
-    for (let c = 0; c < size; c++) row += 'X';
-    console.log(row);
+  for (let repeat = 0; repeat < count; repeat++) {
+    console.log(character.repeat(count));
   }
 }

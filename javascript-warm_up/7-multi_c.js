@@ -1,9 +1,13 @@
 #!/usr/bin/node
-const x = Math.floor(Number(process.argv[2]));
-if (isNaN(x)) {
+
+// prints 3 phrases.
+
+const count = process.argv[2];
+const string = 'C is fun';
+if (isNaN(count)) {
   console.log('Missing number of occurrences');
 } else {
-  for (let i = 0; i < x; i++) {
-    console.log('C is fun');
+  for (let repeat = 0; repeat < count; repeat++) {
+    console.log(string);
   }
 }
