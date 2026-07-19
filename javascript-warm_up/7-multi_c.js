@@ -1,13 +1,12 @@
 #!/usr/bin/node
 
-// prints 3 phrases.
+const count = parseInt(process.argv[2], 10);
+const message = 'C is fun';
 
-const count = process.argv[2];
-const string = 'C is fun';
-if (isNaN(count)) {
+if (Number.isNaN(count)) {
   console.log('Missing number of occurrences');
-} else {
-  for (let repeat = 0; repeat < count; repeat++) {
-    console.log(string);
+} else if (count > 0) {
+  for (let repeat = 0; repeat < count; repeat += 1) {
+    console.log(message);
   }
 }

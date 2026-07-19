@@ -1,8 +1,10 @@
 #!/usr/bin/node
 
-// prints 3 phrases.
+const phrases = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+let output = '';
 
-const variable = ['C is fun', 'Python is cool', 'Javascript is amazing'];
-for (const phrase in variable) {
-  console.log(variable[phrase]);
+for (let index = 0; index < phrases.length; index += 1) {
+  output += phrases[index] + ((index < phrases.length - 1) ? '\n' : '');
 }
+
+console.log(output);
