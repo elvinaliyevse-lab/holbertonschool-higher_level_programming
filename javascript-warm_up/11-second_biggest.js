@@ -1,11 +1,9 @@
 #!/usr/bin/node
-
-const numbers = process.argv.slice(2).map((value) => parseInt(value, 10));
-const uniqueNumbers = [...new Set(numbers)];
-
-if (uniqueNumbers.length < 2) {
+if (process.argv.length <= 3) {
   console.log(0);
 } else {
-  uniqueNumbers.sort((a, b) => b - a);
-  console.log(uniqueNumbers[1]);
+  const args = process.argv.map(Number)
+    .slice(2, process.argv.length)
+    .sort((a, b) => a - b);
+  console.log(args[args.length - 2]);
 }

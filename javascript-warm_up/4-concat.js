@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const firstArgument = process.argv[2];
-const secondArgument = process.argv[3];
+// prints a message depending of the number of arguments passed:
 
-console.log(firstArgument + ' is ' + secondArgument);
+const string = process.argv[2] + ' ' + 'is' + ' ' + process.argv[3];
+console.log(string);

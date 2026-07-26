@@ -1,10 +1,13 @@
 #!/usr/bin/node
 
-const numberOfArguments = process.argv.length - 2;
+// prints a message depending of the number of arguments passed:
+// if no argument passed prints no argument
+// if arguments passed prints argument found.
 
-if (numberOfArguments === 0) {
+const string = process.argv.length;
+if (string === 2) {
   console.log('No argument');
-} else if (numberOfArguments === 1) {
+} else if (string === 3) {
   console.log('Argument found');
 } else {
   console.log('Arguments found');

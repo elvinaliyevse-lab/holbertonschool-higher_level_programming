@@ -1,9 +1,10 @@
 #!/usr/bin/node
 
-const number = parseInt(process.argv[2], 10);
+// prints a message depending of the number of arguments passed:
 
-if (Number.isNaN(number)) {
-  console.log('Not a number');
-} else {
+const number = process.argv[2];
+if (parseInt(number)) {
   console.log('My number: ' + number);
+} else {
+  console.log('Not a number');
 }
