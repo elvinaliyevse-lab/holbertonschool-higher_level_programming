@@ -1,0 +1,59 @@
+I needed a class to count how many of its own objects existed. I wrote one line inside __init__:
+
+self.number_of_instances += 1
+
+The count stayed wrong. Every object insisted there was exactly one of it. The fix was a single word:
+
+Rectangle.number_of_instances += 1
+
+Here's why, because it turns out this one difference explains a lot of Python.
+
+A class attribute belongs to the class, and every instance shares the same one. An instance attribute belongs to one object. The rule that matters:
+
+Reading an attribute falls back to the class. Assigning one never does.
+
+So self.count += 1 expands to self.count = self.count + 1. The read finds the class attribute (0), adds one, and then the assignment creates a brand new attribute on the instance holding 1. The class value never moves:
+
+class Counter:
+    count = 0
+
+c1, c2 = Counter(), Counter()
+c1.bump_wrong()
+
+print(c1.count, c2.count, Counter.count)
+->  1 0 0
+
+print(c1.__dict__)
+->  {'count': 1}      <- the shadow copy
+
+You can see it because none of this is magic. Attributes live in ordinary dictionaries:
+
+print(r1.__dict__)
+->  {'_Rectangle__width': 2, '_Rectangle__height': 2}
+
+No print_symbol in there — that one lives on the class. And self.__width shows up as _Rectangle__width, because double-underscore names get mangled with the class name.
+
+The whole lookup rule fits in a sentence: reading obj.x checks the instance dictionary first, then the class, then each parent up the chain.
+
+The same shadowing that broke my counter is a feature when you want it. My __str__ draws with self.print_symbol, so one object can override the class default while every other object keeps it:
+
+r1.print_symbol = "*"
+
+print(r1)      print(r2)
+**             ###
+**             ###
+
+And the trap that catches everyone — a mutable class attribute:
+
+class Basket:
+    items = []          # ONE list, shared by every basket
+
+x.add("apple")
+print(y.items)  ->  ['apple']    # y never added anything
+
+Appending is a mutation, not an assignment, so there's no shadowing to save you. It reaches the shared list directly.
+
+Full write-up with the __dict__ details, every way to create both kinds, and when each is the right call:
+[PASTE YOUR ARTICLE LINK HERE]
+
+#Python #SoftwareEngineering #HolbertonSchool
